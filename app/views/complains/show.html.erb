@@ -9,6 +9,8 @@
       <span class="badge bg-secondary"><%= @complain.category&.name || "Uncategorized" %></span>
     </p>
     <p><strong>Details:</strong><br><%= simple_format(@complain.details) %></p>
+    <p><strong>Location:</strong> <%= @complain.location %></p>
+    <p><strong>Created At:</strong> <%= @complain.created_at.strftime("%B %d, %Y at %I:%M %p") %></p
   </div>
 
   <div class="card-footer bg-light d-flex justify-content-between">
