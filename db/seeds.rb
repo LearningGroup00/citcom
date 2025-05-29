@@ -7,3 +7,17 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+categories = [
+  "Water & Sanitation",
+  "Electricity",
+  "Healthcare",
+  "Education",
+  "Road & Transport",
+  "Agriculture",
+  "Social Issues"
+]
+
+categories.each do |name|
+  Category.find_or_create_by(name: name)
+end

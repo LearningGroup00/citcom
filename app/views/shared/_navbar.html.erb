@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to "CitcomApp", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Complains", complains_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "New Complain", new_complain_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <%= form_with url: complains_path, method: :get, class: "d-flex", local: true do |form| %>
+        <%= form.text_field :query, class: "form-control me-2", placeholder: "Search complains..." %>
+      <% end %>
+
+      <!-- Right side (auth buttons, user info, etc.) -->
+      <ul class="navbar-nav ms-auto">
+        <%# Example static user actions, modify if you're using Devise or Auth %>
+        <li class="nav-item">
+          <%= link_to "Login", "#", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Signup", "#", class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

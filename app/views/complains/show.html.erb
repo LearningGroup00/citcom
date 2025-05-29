@@ -1,0 +1,24 @@
+<div class="card shadow border-0">
+  <div class="card-header bg-primary text-white">
+    <h3 class="mb-0"><%= @complain.title %></h3>
+  </div>
+
+  <div class="card-body">
+    <p><strong>Source:</strong> <%= @complain.source %></p>
+    <p><strong>Category:</strong>
+      <span class="badge bg-secondary"><%= @complain.category&.name || "Uncategorized" %></span>
+    </p>
+    <p><strong>Details:</strong><br><%= simple_format(@complain.details) %></p>
+  </div>
+
+  <div class="card-footer bg-light d-flex justify-content-between">
+    <div>
+      <%= link_to 'Edit', edit_complain_path(@complain), class: "btn btn-warning btn-sm" %>
+      <%= button_to 'Delete', complain_path(@complain), method: :delete,
+          data: { confirm: 'Are you sure?' },
+          form: { class: "d-inline" },
+          class: "btn btn-danger btn-sm" %>
+    </div>
+    <%= link_to 'Back to List', complains_path, class: "btn btn-outline-secondary btn-sm" %>
+  </div>
+</div>

@@ -5,7 +5,7 @@
 
 For running any Rails command like `rails c` prepend the command with `docker compose run citcom`
 
-Examples:
+Examples:d
 ```
 docker compose run citcom rails c
 ```

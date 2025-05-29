@@ -8,8 +8,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: citcom_development
     ports:
-      - "5432:5432"
-
+      - "5433:5432"  
   citcom:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0 -p 3000"
@@ -17,7 +16,7 @@ services:
     tty: true
     volumes:
       - .:/app
-      - ~/.irb_history:/root/.irb_history
+      #- ~/.irb_history:/root/.irb_history
     ports:
       - "3000:3000"
     depends_on:
