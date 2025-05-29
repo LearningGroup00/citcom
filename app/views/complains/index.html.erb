@@ -2,7 +2,6 @@
 
 <%= form_with url: complains_path, method: :get, local: true, html: { id: "filter_form" } do %>
   <div class="row mb-3">
-  
     <div class="col-md-4">
       <%= select_tag :category_id,
           options_from_collection_for_select(@categories, :id, :name, params[:category_id]),
@@ -17,18 +16,6 @@
   </div>
 <% end %>
 
-<% if params[:query].present? || params[:category_id].present? %>
-  <p class="text-muted">
-    Showing results for
-    <% if params[:query].present? %>
-      search: "<strong><%= params[:query] %></strong>"
-    <% end %>
-    <% if params[:category_id].present? %>
-      category: "<strong><%= Category.find(params[:category_id]).name rescue 'N/A' %></strong>"
-    <% end %>
-  </p>
-<% end %>
-
 <table class="table table-bordered table-striped">
   <thead class="table-dark">
     <tr>
@@ -36,20 +23,15 @@
       <th>Source</th>
       <th>Location</th>
       <th>Category</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @complains.each do |complain| %>
-      <tr>
+      <tr onclick="window.location='<%= complain_path(complain) %>'" style="cursor: pointer;">
         <td><%= complain.title %></td>
         <td><%= complain.source %></td>
         <td><%= complain.location %></td>
         <td><%= complain.category&.name || 'Uncategorized' %></td>
-        <td>
-          <%= link_to 'Show', complain_path(complain), class: "btn btn-sm btn-info" %>
-          
-        </td>
       </tr>
     <% end %>
   </tbody>

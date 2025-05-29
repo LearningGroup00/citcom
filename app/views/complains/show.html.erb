@@ -1,26 +1,30 @@
-<div class="card shadow border-0">
-  <div class="card-header bg-primary text-white">
+<div class="card shadow-sm border-0 mb-4">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
     <h3 class="mb-0"><%= @complain.title %></h3>
+    <small class="text-light">
+      Submitted: <%= @complain.created_at.strftime("%d %B %Y, %I:%M %p") %>
+    </small>
   </div>
 
   <div class="card-body">
+    <p><strong>Category:</strong> <%= @complain.category&.name || 'Uncategorized' %></p>
     <p><strong>Source:</strong> <%= @complain.source %></p>
-    <p><strong>Category:</strong>
-      <span class="badge bg-secondary"><%= @complain.category&.name || "Uncategorized" %></span>
-    </p>
-    <p><strong>Details:</strong><br><%= simple_format(@complain.details) %></p>
     <p><strong>Location:</strong> <%= @complain.location %></p>
-    <p><strong>Created At:</strong> <%= @complain.created_at.strftime("%B %d, %Y at %I:%M %p") %></p
+    
+    <hr>
+    <h5 class="mt-4">Details</h5>
+    <p class="text-muted"><%= simple_format(@complain.details) %></p>
   </div>
 
-  <div class="card-footer bg-light d-flex justify-content-between">
-    <div>
+  <div class="card-footer bg-light d-flex justify-content-between align-items-center">
+    <div class="d-flex gap-2">
       <%= link_to 'Edit', edit_complain_path(@complain), class: "btn btn-warning btn-sm" %>
       <%= button_to 'Delete', complain_path(@complain), method: :delete,
-          data: { confirm: 'Are you sure?' },
-          form: { class: "d-inline" },
-          class: "btn btn-danger btn-sm" %>
+            data: { confirm: 'Are you sure?' },
+            form: { class: "d-inline" },
+            class: "btn btn-danger btn-sm" %>
     </div>
-    <%= link_to 'Back to List', complains_path, class: "btn btn-outline-secondary btn-sm" %>
+    
+    <%= link_to 'Back to All Complaints', complains_path, class: "btn btn-outline-secondary btn-sm" %>
   </div>
 </div>
