@@ -5,6 +5,7 @@ class ComplainsController < ApplicationController
     @categories = Category.all
   
     @complains = Complain.all
+    @total_complaints = Complain.count
   
     if params[:query].present?
       @complains = @complains.where("title ILIKE :query OR source ILIKE :query", query: "%#{params[:query]}%")
