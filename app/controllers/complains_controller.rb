@@ -1,4 +1,6 @@
 class ComplainsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   before_action :set_complain, only: [:show, :edit, :update, :destroy]
 
   def index

@@ -12,6 +12,11 @@ docker compose run citcom rails c
 ```
 docker compose run citcom bin/rails db:migrate
 ```
+
+{sudo docker compose run citcom bundle exec rails db:migrate
+sudo docker compose run citcom bundle exec rails c}
+
+
 ```
 docker compose run citcom bundle
 ```
@@ -22,3 +27,11 @@ docker compose run citcom bundle
 - Run `docker ps` to see all running container
 - Find the container name for `citcom`
 - attach to the container `docker attach <container-name>`
+
+
+Date:03/06/2025
+#User setup using Devise: 
+-User info- (first_name,last_name,email,ward or village,post _office, upazila,zila and contuct_number.) 
+-User type: anonymus citizen and admin.
+-Complain_type: anonymus, citizens.
+-And also add picture/pdf file on complain.
