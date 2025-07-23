@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_04_084200) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_21_171531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -28,7 +28,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_04_084200) do
     t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.string "location"
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_complains_on_category_id"
+    t.index ["user_id"], name: "index_complains_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,4 +54,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_04_084200) do
   end
 
   add_foreign_key "complains", "categories"
+  add_foreign_key "complains", "users"
 end

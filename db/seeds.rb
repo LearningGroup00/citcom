@@ -21,3 +21,15 @@ categories = [
 categories.each do |name|
   Category.find_or_create_by(name: name)
 end
+
+User.create!(
+  email: "admin@example.com",
+  password: "password",
+  user_type: "admin"
+)
+
+User.create!(
+  email: "user@example.com",
+  password: "password",
+  user_type: "user"
+)

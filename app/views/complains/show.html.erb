@@ -18,11 +18,16 @@
 
   <div class="card-footer bg-light d-flex justify-content-between align-items-center">
     <div class="d-flex gap-2">
-      <%= link_to 'Edit', edit_complain_path(@complain), class: "btn btn-warning btn-sm" %>
-      <%= button_to 'Delete', complain_path(@complain), method: :delete,
-            data: { confirm: 'Are you sure?' },
-            form: { class: "d-inline" },
-            class: "btn btn-danger btn-sm" %>
+      <% if policy(@complain).update? %>
+        <%= link_to 'Edit', edit_complain_path(@complain), class: "btn btn-warning btn-sm" %>
+      <% end %>
+      
+      <% if policy(@complain).destroy? %>
+        <%= button_to 'Delete', complain_path(@complain), method: :delete,
+              data: { confirm: 'Are you sure?' },
+              form: { class: "d-inline" },
+              class: "btn btn-danger btn-sm" %>
+      <% end %>
     </div>
     
     <%= link_to 'Back to All Complaints', complains_path, class: "btn btn-outline-secondary btn-sm" %>
