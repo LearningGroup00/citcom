@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Admin Dashboard</h1>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card text-center shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Total Users</h5>
+          <p class="display-6"><%= @users_count %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-center shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Total Complaints</h5>
+          <p class="display-6"><%= @complaints_count %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Latest Complaints</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @latest_complaints.each do |complaint| %>
+        <tr>
+          <td><%= link_to complaint.title, complain_path(complaint) %></td>
+          <td><%= complaint.category&.name || 'N/A' %></td>
+          <td><%= complaint.created_at.strftime("%d %B %Y, %I:%M %p") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
