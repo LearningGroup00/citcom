@@ -10,6 +10,17 @@
     <p><strong>Category:</strong> <%= @complain.category&.name || 'Uncategorized' %></p>
     <p><strong>Source:</strong> <%= @complain.source %></p>
     <p><strong>Location:</strong> <%= @complain.location %></p>
+    <% if @complain.attachments.attached? %>
+      <h5 class="mt-4">Attachments:</h5>
+      <ul>
+        <% @complain.attachments.each do |file| %>
+          <li>
+            <%= link_to file.filename.to_s, url_for(file), target: "_blank" %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
     
     <hr>
     <h5 class="mt-4">Details</h5>

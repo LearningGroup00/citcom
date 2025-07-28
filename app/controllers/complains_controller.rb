@@ -63,6 +63,6 @@ class ComplainsController < ApplicationController
   end
 
   def complain_params
-    params.require(:complain).permit(:title, :source, :details, :category_id, :location)
+    params.require(:complain).permit(:title, :source, :details, :category_id, :location, attachments: [])
   end
 end
